@@ -2,9 +2,10 @@ package com.homework_10;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Iterator;
 
 // stores chat history, add new msg to history and get last msg sent
-public class ChatHistory {
+public class ChatHistory implements IterableByUser {
     private List<Message> messages;
 
     public ChatHistory() {
@@ -44,5 +45,9 @@ public class ChatHistory {
         for (Message message : messages) {
             System.out.println(message.getSender().getName() + ": " + message.getContent());
         }
+    }
+
+    public Iterator<Message> iterator(User userToSearchWith) {
+        return new SearchMessageByUser(this, userToSearchWith);
     }
 }

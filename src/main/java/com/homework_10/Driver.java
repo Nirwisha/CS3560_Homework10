@@ -1,6 +1,7 @@
 package com.homework_10;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class Driver {
     public static void main(String[] args) {
@@ -31,6 +32,14 @@ public class Driver {
 
         System.out.println("\nDemetrius' chat history after blocking Robin: ");
         userTwo.getChatHistory().printHistory();
+
+        System.out.println("\nSearching for Messages by Robin in Demetrius' History");
+        Iterator<Message> robinMsgs = userTwo.iterator(userOne);
+        while (robinMsgs.hasNext()) {
+            Message message = robinMsgs.next();
+
+            System.out.println(message.getSender().getName() + ": " + message.getContent());
+        }
 
     }
 }

@@ -1,9 +1,10 @@
 package com.homework_10;
 
 import java.util.List;
+import java.util.Iterator;
 
 // methods to send messages to other users, recieve messages, and undo last msg (not communicating directly)
-public class User {
+public class User implements IterableByUser {
     private String name;
     private ChatServer server;
     private ChatHistory history;
@@ -62,6 +63,10 @@ public class User {
 
         lastSentMessage = null;
         memento = null;
+    }
+
+    public Iterator<Message> iterator(User userToSearchWith) {
+        return history.iterator(userToSearchWith);
     }
  
 }
