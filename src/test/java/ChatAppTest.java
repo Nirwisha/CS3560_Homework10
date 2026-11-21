@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class ChatAppTest {
     ChatServer server = new ChatServer();
@@ -64,6 +65,25 @@ public class ChatAppTest {
         
         String expected = "Saved message";
         String actual = memento.getContent();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test 
+    public void testSearchMessage() {
+        userOne.sendMessage(Arrays.asList(userTwo), "Hello!");
+        userTwo.sendMessage(Arrays.asList(userOne), "Hello, Robin!");
+
+        Iterator<Message> messages = userTwo.iterator(userOne);
+
+        int actual = 0;
+
+        while (messages.hasNext()) {
+            messages.next();
+            actual++;
+        }
+
+        int expected = 2;
 
         assertEquals(expected, actual);
     }
