@@ -16,6 +16,14 @@ public class Driver {
         System.out.println("\nLinus' chat history: ");
         userThree.getChatHistory().printHistory();
 
+        userOne.undoLastMessage();
+
+        System.out.println("\nLinus' chat history: ");
+        userThree.getChatHistory().printHistory();
+
+        System.out.println("\nDemetrius' chat history: ");
+        userTwo.getChatHistory().printHistory();
+
         userOne.sendMessage(Arrays.asList(userTwo), "Did you bring the trash bin in?");
         server.blockUser(userTwo, userOne);
 
